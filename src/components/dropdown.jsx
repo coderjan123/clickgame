@@ -32,9 +32,9 @@ const Header_info = () => {
   return (
     <>
     <div className="container">
-      <div className="option"><Link to={"/"}  onClick={playSound} className="option-link"> Home</Link></div>
-      <div className="option"  ><Link to={"/leaderboard"} onClick={playSound} className="option-link"> Leaderboard</Link></div>
-      <div className="option extradiv" ><p onClick={() => {playSound();}}className="extrawurst">Log out</p></div>
+      <div className="option"><Link to={"/"}  onClick={playSound} className="option-link" title="Obdachlosenzentrum"> Home</Link></div>
+      <div className="option"  ><Link to={"/leaderboard"} onClick={playSound} className="option-link" title="Rangliste"> Rangliste</Link></div>
+      <div className="option extradiv" ><p onClick={() => {playSound();}}className="extrawurst" title="gegenteil von anmelden">Abmelden</p></div>
       </div>
     </>
 

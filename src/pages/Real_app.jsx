@@ -109,29 +109,13 @@ function Real_app() {
     } else if (roulette === "GIGA") {
       const rand = Math.random() * 100;
 
-      if (rand < 20) {
-        // 20% Chance: -500 bis -1000 Klicks oder 0 falls nicht genug Klicks
-        const loss = 500 + Math.floor(Math.random() * 501); // 500-1000
-        setClicks((prev) => (prev >= loss ? prev - loss : 0));
+      if (rand < 50) {
+        // alles oder nichts
+        setClicks((prev) => prev * 2); 
         clickSound.play();
-      } else if (rand < 35) {
-        // 15% Chance: +500 bis +1000 Klicks, evtl. verdoppelt
-        let gain = 500 + Math.floor(Math.random() * 501);
-        if (Math.random() < 0.3) gain *= 2;  // 30% Chance auf Verdopplung
-        setClicks((prev) => prev + gain);
-        clickSound.play();
-      } else if (rand < 37) {
-        // 2% Chance: großer Bonus +2000 bis +4000 Klicks
-        let bigGain = 2000 + Math.floor(Math.random() * 2001);
-        setClicks((prev) => prev + bigGain);
-        clickSound.play();
-      } else if (rand < 42) {
-        // 5% Chance Reset auf 0 Klicks
+      } else  {
+        
         setClicks(0);
-      } else {
-        // 58% Chance: kleine Gewinne +50 bis +100 Klicks
-        let smallGain = 50 + Math.floor(Math.random() * 51);
-        setClicks((prev) => prev + smallGain);
         clickSound.play();
       }
     }
@@ -192,19 +176,19 @@ function Real_app() {
 
   return (
     <div className="real_app">
-      <Popup_message key={messageId} message={message} success={success} onClose={clearMessage} />
+      <Popup_message key={messageId} message={message} success={success} onClose={clearMessage} title={"easter egg"}/>
       <Header_info />
 
-      <button className="clickbutton" onClick={handle_click}>
+      <button className="clickbutton" onClick={handle_click} title="Klick mich"> 
         {clicks === null ? "Lädt..." : clicks}
       </button>
 
-      <button onClick={handle_savegame} className="save-btn">
-        Save Game
+      <button onClick={handle_savegame} className="save-btn" title="Speicher deinen score">
+        Spiel speichern
       </button>
 
-      <button className="save-btn" onClick={() => navigate("/Leaderboard")}>
-        Leaderboards
+      <button className="save-btn" title="Leaderboard" onClick={() => navigate("/Leaderboard")}>
+        Rangliste
       </button>
 
       <button
@@ -215,15 +199,13 @@ function Real_app() {
             ? "Roulette ist aus"
             : roulette === "ON"
             ? "99% chance +10 clicks, 1% chance reset auf 0"
-            : "GIGA Mode: 40% -1000 (oder 0), 9% +1000, 1% +10000, 10% 0, sonst +100"
+            : "GIGA Mode: 50% chance alles oder nichts"
         }
       >
         {`Roulette mode: ${roulette}`}
       </button>
 
-      <button onClick={signOut} className="signout-btn">
-        Sign out
-      </button>
+      
     </div>
   );
 }
