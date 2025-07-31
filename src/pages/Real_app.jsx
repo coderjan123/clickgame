@@ -13,6 +13,7 @@ function Real_app() {
   const [success, setSuccess] = useState(true);
   const [messageId, setMessageId] = useState(0);
   const [roulette, setRoulette] = useState("OFF");
+    const clickSound = new Audio("/clickgame/sharp-pop-328170.mp3");
 
   const clicksRef = useRef(clicks);
   useEffect(() => {
@@ -95,39 +96,42 @@ function Real_app() {
   const handle_click = () => {
     if (clicks === null) return;
 
-    const clickSound = new Audio("/sharp-pop-328170.mp3");
-
     if (roulette === "OFF") {
       setClicks((prev) => prev + 1);
       clickSound.play();
     } else if (roulette === "ON") {
-      if (Math.floor(Math.random() * 100) + 1 === 50) {
+      if (Math.floor(Math.random() * 100) < 5) { // 5% Chance Reset auf 0
         setClicks(0);
       } else {
-        setClicks((prev) => prev + 10);
+        setClicks((prev) => prev + 5);
         clickSound.play();
       }
     } else if (roulette === "GIGA") {
       const rand = Math.random() * 100;
 
-      if (rand < 40) {
-        // 40% Chance: -1000 Klicks oder 0 falls nicht genug Klicks
-        setClicks((prev) => (prev >= 1000 ? prev - 1000 : 0));
+      if (rand < 20) {
+        // 20% Chance: -500 bis -1000 Klicks oder 0 falls nicht genug Klicks
+        const loss = 500 + Math.floor(Math.random() * 501); // 500-1000
+        setClicks((prev) => (prev >= loss ? prev - loss : 0));
         clickSound.play();
-      } else if (rand < 49) {
-        // 9% Chance +1000 Klicks
-        setClicks((prev) => prev + 1000);
+      } else if (rand < 35) {
+        // 15% Chance: +500 bis +1000 Klicks, evtl. verdoppelt
+        let gain = 500 + Math.floor(Math.random() * 501);
+        if (Math.random() < 0.3) gain *= 2;  // 30% Chance auf Verdopplung
+        setClicks((prev) => prev + gain);
         clickSound.play();
-      } else if (rand < 50) {
-        // 1% Chance +10000 Klicks
-        setClicks((prev) => prev + 10000);
+      } else if (rand < 37) {
+        // 2% Chance: großer Bonus +2000 bis +4000 Klicks
+        let bigGain = 2000 + Math.floor(Math.random() * 2001);
+        setClicks((prev) => prev + bigGain);
         clickSound.play();
-      } else if (rand < 60) {
-        // 10% Chance auf 0 Klicks (50-60)
+      } else if (rand < 42) {
+        // 5% Chance Reset auf 0 Klicks
         setClicks(0);
       } else {
-        // Rest: +100 Klicks (60-100)
-        setClicks((prev) => prev + 100);
+        // 58% Chance: kleine Gewinne +50 bis +100 Klicks
+        let smallGain = 50 + Math.floor(Math.random() * 51);
+        setClicks((prev) => prev + smallGain);
         clickSound.play();
       }
     }
@@ -142,7 +146,6 @@ function Real_app() {
   const clearMessage = () => setMessage("");
 
   const handle_savegame = async () => {
-    const clickSound = new Audio("/sharp-pop-328170.mp3");
     clickSound.play();
 
     const {
@@ -169,7 +172,6 @@ function Real_app() {
   };
 
   const toggleRoulette = () => {
-    const clickSound = new Audio("/sharp-pop-328170.mp3");
     clickSound.play();
 
     setRoulette((prev) => {

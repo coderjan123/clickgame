@@ -7,6 +7,8 @@ import supabase from "../helper/supabaseClient";
 const Header_info = () => {
   const navigate = useNavigate();
     const username = localStorage.getItem("username");
+        const clickSound = new Audio("/clickgame/sharp-pop-328170.mp3");
+
 
     if (username !== null) {
     console.log("Benutzername gefunden:", username);
@@ -16,7 +18,6 @@ const Header_info = () => {
     }
 
       const signOut = async () => {
-    const clickSound = new Audio("/sharp-pop-328170.mp3");
     clickSound.play();
 
     const { error } = await supabase.auth.signOut();
@@ -24,7 +25,6 @@ const Header_info = () => {
     navigate("/login");
   };
      const playSound = () => {
-    const clickSound = new Audio("/sharp-pop-328170.mp3");
     clickSound.play();
 
   };
