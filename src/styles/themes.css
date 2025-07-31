@@ -1,0 +1,85 @@
+/* === themes.css === */
+/* Catppuccin Mocha Theme */
+
+:root {
+  /* Base */
+  --font-family: 'Inter', sans-serif;
+  --border-radius: .5rem;
+  --transition-fast: 0.2s;
+  --transition-slow: 0.4s;
+  --border-radius-big: 2rem;
+
+  /* Colors */
+  --bg: #1e1e2e;
+  --text: #cdd6f4;
+  --primary: #b4befe;
+  --accent: #89b4fa;
+  --error: #f38ba8;
+  --success: #a6e3a1;
+
+  --surface: #313244;
+  --surface0: #45475a;
+  --surface1: #585b70;
+  --surface-contrast:hsl(233, 50%, 39%);
+
+  --muted: #6c7086;
+  --subtext0: #b4bbda;
+
+  /* Hover states */
+  --accent-hover: #739fd9;
+  --primary-hover: #a5bffb;
+  
+  
+  
+  --gradient-angle: 45deg;
+
+  --second_gradient: #1a1a32;
+
+  --sky: hsl(189, 71%, 73%);
+    --sky-text: hsl(189, 0%, 23%);
+
+
+}
+
+body {
+  /*background-color: var(--bg);*/
+  background: radial-gradient(circle at center, var(--bg), var(--second_gradient), var(--bg));
+
+  color: var(--text);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.light-theme {
+  /* Hintergrund & Flächen */
+  --bg: #d1d5dd;             /* sehr helles Grau, angenehmer als reines Weiß */
+  --surface0: #e6e9ef;        /* heller, warmer Flächen-Hintergrund (Mantle) */
+  --surface: #d0d3da;
+  --second_gradient: hsl(220, 31%, 89%);
+
+
+   
+  --surface0: #b1b3b8;
+  --surface1: #cdd2dd;
+  --surface-contrast:hsl(255, 70%, 54%);
+
+  /* Text */
+  --text: #585b70;           /* dunkles Grau-Blau, guter Kontrast, angenehm fürs Auge */
+  --muted: #9399b2;          /* für weniger wichtige Texte */
+  --subtext0: #62667e;       /* dezenter, leichter Kontrast */
+
+  /* Primär & Akzent */
+  --primary: #1e66f5;        /* Blau aus Latte */
+  --primary-hover: #3e7bfa;  /* etwas hellerer Blauton */
+  --accent: #7287fd;         /* Lavendel – sanft und passend zum Blau */
+  --accent-hover: #5c6ef8;   /* dunkleres Lavendel für Hover */
+
+  /* Status */
+  --error: #d20f39;          /* kräftiges Rot */
+  --success: #40a02b;        /* kräftiges Grün */
+
+  --sky: hsl(197, 97%, 46%);
+      --sky-text: hsl(197, 25%, 0%);
+
+}

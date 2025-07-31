@@ -1,0 +1,7 @@
+.top-leiste {
+  width: 100%;
+  height: 60px;
+
+  display: flex;
+  justify-content: space-between;  /* Elemente links/rechts verteilen */
+  align-items: center;  }

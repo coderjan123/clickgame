@@ -1,0 +1,57 @@
+/* Gesamtcontainer */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.auth .page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Wrapper für das Formular */
+.auth .form-wrapper {
+  background-color: var(--surface);
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 10px #0003;
+  text-align: center;
+}
+
+/* Formularlayout */
+.auth form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Eingabefelder */
+.auth input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--surface1);
+  background-color: var(--surface0);
+  color: var(--text);
+}
+
+.auth button{
+  background-color: var(--accent);
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.75rem;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+
+
+}
+.auth button:hover{
+  transform: scale(0.97);
+
+}
