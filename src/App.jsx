@@ -10,7 +10,7 @@ function App() {
   
   return (
     
-    <BrowserRouter>
+    <BrowserRouter  basename="/clickgame">
         <Routes>
            {/*home */}
             <Route
